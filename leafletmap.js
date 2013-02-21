@@ -141,7 +141,12 @@ info.update = function (props) {
     this._div.innerHTML = props ? _.template("<h3> <%= NAME_1 %> </h3>", props) +
 	(data ? 
 	'<h4>'+ f('r_polling_irregularity',data) + ' polling irregularities.</h4>'  +
-	f('ballots_counted',data) + ' ballots counted.<br/>'
+	f('ballots_not_counted',data) + ' ballots not counted.<br/>'+
+	f('not_enough_ballots',data) + ' not enough ballets.<br/>'+
+	f('ballot_boxes_not_empty_before_voting',data) + ' ballot boxes not empty before voting.<br/>'+
+	f('ballot_boxes_not_closed_with_hec_seal',data) + ' ballot boxes not closed with HEC seal.<br/>'+
+	f('polling_center_not_handycap_accessible',data) + ' not handycap accessible.<br/>'+
+	f('polling_centers_not_have_indelible_ink',data) + ' did not have indelible ink.<br/>'
 	: "No data") : 'Hover over a governate'
 };
 header.addTo(map);
