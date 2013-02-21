@@ -2,8 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 <meta charset="utf-8">
 <style>
+h1 {
+  color: #333;
+font-family: "Yanone Kaffeesatz", Helvetica, sans-serif;
+font-weight: 400; }
+	
+
 #map {
   display: block;
   position:absolute;
@@ -48,6 +55,13 @@
   margin: 0 0 5px;
   color: #777;
 }
+#bottom_menu {
+	bottom:0;
+  	margin-top:0px;
+  	margin-bottom:50px;
+  	margin-right:0px;
+  	margin-left:0px;
+}
 </style>
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
 </head>
@@ -63,5 +77,8 @@
 <!-- <script src="simple_statistics.js"></script> -->
 
 <script src="leafletmap.js"></script>
+<div id="bottom_menu">
+<center><a href="http://dhwpi.enketo.formhub.org/webform">Submit Report</a></center>
+</div>
 </body>
 </html>
