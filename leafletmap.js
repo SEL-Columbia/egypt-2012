@@ -15,9 +15,9 @@ refresh();
 
 function getColor(d) {
     return d==null ? '#999' :
-	d > 0.8 ? '#800026' :
-        d > 0.6  ? '#BD0026' :
-        d > 0.4  ? '#E31A1C' :
+	d > 0.35 ? '#800026' :
+        d > 0.3  ? '#BD0026' :
+        d > 0.25  ? '#E31A1C' :
         d > 0.2 ? '#FC4E2A' :
         d > 0.15  ? '#FD8D3C' :
         d > 0.1  ? '#FEB24C' :
@@ -33,7 +33,7 @@ var corrections = {
 function styleGen(feature) {
     //var data = dataById[corrections[feature.properties.NAME_1]];
     var data = dataById[feature.properties.ID_1];
-    var ratio = data ? data.polls_open : null;
+    var ratio = data ? data.r_polling_irregularity : null;
     var defaultStyle = { weight: 2, opacity: 1, color: 'white',
                          dashArray: '3', fillOpacity: 0.7 };
     return _.defaults({ fillColor: getColor(ratio)}, defaultStyle);
@@ -98,7 +98,7 @@ function resetHighlight(e) {
 var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
-    grades = [0, 0.05, 0.1, 0.15, 0.2, 0.4, 0.6, 0.8],
+    grades = [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35],
     labels = [];
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
@@ -140,10 +140,8 @@ info.update = function (props) {
     }
     this._div.innerHTML = props ? _.template("<h3> <%= NAME_1 %> </h3>", props) +
 	(data ? 
-	'<h4>' + f('polls_open',data) + ' polls open.</h4>'  +
-	f('ballots_counted',data) + ' ballots counted.<br/>' +
-	f('ballot_boxes_closed_with_hec_seal',data) + ' ballot boxes closed with HEC seal.<br/>' +
-	f('polling_centers_have_indelible_ink', data) + ' polling centers have indelible ink.<br/>'
+	'<h4>'+ f('r_polling_irregularity',data) + ' polling irregularities.</h4>'  +
+	f('ballots_counted',data) + ' ballots counted.<br/>'
 	: "No data") : 'Hover over a governate'
 };
 header.addTo(map);
