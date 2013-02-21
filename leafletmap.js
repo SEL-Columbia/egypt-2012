@@ -6,7 +6,7 @@ wax.tilejson('http://a.tiles.mapbox.com/v3/modilabs.map-p543gvbh.jsonp', functio
 var refresh = function() {
     queue()
     .defer(d3.json, "egypt.json")
-    .defer(d3.csv, "http://bamboo.io/datasets/7fc17056847648fbb7050ebc2b975b62.csv")
+    .defer(d3.csv, "http://bamboo.io/datasets/0e7197bd59a34ec69f0bf1b052285993.csv")
     //.defer(d3.csv, "http://bamboo.io/datasets/12f4ad4ae051459b8d9ab9bac4e6e227.csv")
     //.defer(d3.csv, "http://bamboo.io/datasets/bcf1cd416a464bc893ac0e57c75bfade.csv")
     .await(ready);
@@ -33,7 +33,7 @@ var corrections = {
 function styleGen(feature) {
     //var data = dataById[corrections[feature.properties.NAME_1]];
     var data = dataById[feature.properties.ID_1];
-    var ratio = data ? data.r_polling_irregularity : null;
+    var ratio = data ? data.polling_irregularities : null;
     var defaultStyle = { weight: 2, opacity: 1, color: 'white',
                          dashArray: '3', fillOpacity: 0.7 };
     return _.defaults({ fillColor: getColor(ratio)}, defaultStyle);
@@ -140,7 +140,7 @@ info.update = function (props) {
     }
     this._div.innerHTML = props ? _.template("<h3> <%= NAME_1 %> </h3>", props) +
 	(data ? 
-	'<h4>'+ f('r_polling_irregularity',data) + ' polling irregularities.</h4>'  +
+	'<h4>'+ f('polling_irregularities',data) + ' polling irregularities.</h4>'  +
 	f('ballots_not_counted',data) + ' ballots not counted.<br/>'+
 	f('not_enough_ballots',data) + ' not enough ballets.<br/>'+
 	f('ballot_boxes_not_empty_before_voting',data) + ' ballot boxes not empty before voting.<br/>'+
