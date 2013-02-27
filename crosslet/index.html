@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+    <link href="css/crosslet.css" rel='stylesheet' type='text/css'>
+<meta charset="utf-8">
+<style>
+
+#map {
+  display: block;
+  position:absolute;
+  height:auto;
+  bottom:0;
+  top:0;
+  left:0;
+  right:0;
+  margin: 0;
+}
+
+#bottom_menu {
+	bottom:0;
+  	margin-top:0;
+  	margin-bottom:50px;
+  	margin-right:0;
+  	margin-left:0;
+}
+</style>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+</head>
+
+<body>
+<div id="map"></div>
+<div id="bottom_menu">
+    <center><a href="http://dhwpi.enketo.formhub.org/webform">Submit Report</a></center>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.0.1/d3.v3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
+<script src="//d3js.org/queue.v1.min.js"></script>
+<script src="//cdn.leafletjs.com/leaflet-0.4.5/leaflet.js"></script>
+<script type="text/javascript">
+    var leafletAPIKey = "a657e60008a444629d17a69cc6f26fd3";
+</script>
+<script src="js/crosslet.js"></script>
+<script src="crossletmap.js"></script>
+</body>
+</html>
