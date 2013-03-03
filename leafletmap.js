@@ -6,9 +6,9 @@ wax.tilejson('http://a.tiles.mapbox.com/v3/modilabs.map-p543gvbh.jsonp', functio
 var refresh = function() {
     queue()
     .defer(d3.json, "egypt.json")
-    .defer(d3.csv, "http://bamboo.io/datasets/0e7197bd59a34ec69f0bf1b052285993.csv")
+    .defer(d3.csv, "http://bamboo.io/datasets/0a56028dd2a941c891ade63d61a5b144.csv")
     // load parent dataset
-    .defer(d3.json, "http://bamboo.io/datasets/4180dccbaad94706a6ae0cd124ab467c/summary?select={%22governorate%22:1}")
+    .defer(d3.json, "http://bamboo.io/datasets/f8cec970b1f6480491b61df487ff3b32/summary?select={%22governorate%22:1}")
     //.defer(d3.csv, "http://bamboo.io/datasets/12f4ad4ae051459b8d9ab9bac4e6e227.csv")
     //.defer(d3.csv, "http://bamboo.io/datasets/bcf1cd416a464bc893ac0e57c75bfade.csv")
     .await(ready);
@@ -164,7 +164,7 @@ data_count.update = function(props) {
     var message = "-";
     if(props)
     {
-        message = d3.format(",f").call(null, props.count) + " data points"
+        message = d3.format(",f").call(null, props.count) + " Poll Observations"
     }
     this._div.innerHTML = message;
 };

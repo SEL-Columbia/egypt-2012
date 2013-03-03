@@ -39,7 +39,7 @@
             polling_irregularities: {
                 title: "Polling Irregularities (%)",
                 data: {
-                    dataSet: "http://bamboo.io/datasets/0e7197bd59a34ec69f0bf1b052285993.csv",
+                    dataSet: "http://bamboo.io/datasets/0a56028dd2a941c891ade63d61a5b144.csv",
                     method: d3.csv,
                     field: "polling_irregularities",
                     preformat: percent,
@@ -53,7 +53,7 @@
             ballot_boxes_not_closed_with_hec_seal: {
                 title: "Ballot boxes not closed with HEC seal (%)",
                 data: {
-                    dataSet: "http://bamboo.io/datasets/0e7197bd59a34ec69f0bf1b052285993.csv",
+                    dataSet: "http://bamboo.io/datasets/0a56028dd2a941c891ade63d61a5b144.csv",
                     method: d3.csv,
                     field: "ballot_boxes_not_closed_with_hec_seal",
                     preformat: percent,
@@ -68,7 +68,7 @@
             {
                 title: "Polling centers without inedible ink (%)",
                 data: {
-                    dataSet: "http://bamboo.io/datasets/0e7197bd59a34ec69f0bf1b052285993.csv",
+                    dataSet: "http://bamboo.io/datasets/0a56028dd2a941c891ade63d61a5b144.csv",
                     method: d3.csv,
                     field: "polling_centers_not_have_indelible_ink",
                     preformat: percent,
@@ -83,7 +83,7 @@
             {
                 title: "Ballot boxes not empty before voting (%)",
                 data: {
-                    dataSet: "http://bamboo.io/datasets/0e7197bd59a34ec69f0bf1b052285993.csv",
+                    dataSet: "http://bamboo.io/datasets/0a56028dd2a941c891ade63d61a5b144.csv",
                     method: d3.csv,
                     field: "ballot_boxes_not_empty_before_voting",
                     preformat: percent,
@@ -98,7 +98,7 @@
             {
                 title: "Didn't have enough ballots (%)",
                 data: {
-                    dataSet: "http://bamboo.io/datasets/0e7197bd59a34ec69f0bf1b052285993.csv",
+                    dataSet: "http://bamboo.io/datasets/0a56028dd2a941c891ade63d61a5b144.csv",
                     method: d3.csv,
                     field: "not_enough_ballots",
                     preformat: percent,
@@ -113,7 +113,7 @@
             {
                 title: "Ballots not counted (%)",
                 data: {
-                    dataSet: "http://bamboo.io/datasets/0e7197bd59a34ec69f0bf1b052285993.csv",
+                    dataSet: "http://bamboo.io/datasets/0a56028dd2a941c891ade63d61a5b144.csv",
                     method: d3.csv,
                     field: "ballots_not_counted",
                     preformat: percent,
@@ -128,7 +128,7 @@
             {
                 title: "Polling centers not handy cap accessible (%)",
                 data: {
-                    dataSet: "http://bamboo.io/datasets/0e7197bd59a34ec69f0bf1b052285993.csv",
+                    dataSet: "http://bamboo.io/datasets/0a56028dd2a941c891ade63d61a5b144.csv",
                     method: d3.csv,
                     field: "polling_center_not_handycap_accessible",
                     preformat: percent,
