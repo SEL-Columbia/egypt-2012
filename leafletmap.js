@@ -7,6 +7,8 @@ var refresh = function() {
     queue()
     .defer(d3.json, "egypt.json")
     .defer(d3.csv, "http://bamboo.io/datasets/0e7197bd59a34ec69f0bf1b052285993.csv")
+    // load parent dataset
+    .defer(d3.json, "http://bamboo.io/datasets/4180dccbaad94706a6ae0cd124ab467c/summary?select={%22governorate%22:1}")
     //.defer(d3.csv, "http://bamboo.io/datasets/12f4ad4ae051459b8d9ab9bac4e6e227.csv")
     //.defer(d3.csv, "http://bamboo.io/datasets/bcf1cd416a464bc893ac0e57c75bfade.csv")
     .await(ready);
@@ -42,7 +44,7 @@ var geojson;
 var dataById = {};
 
 var lg = L.layerGroup();
-function ready(error, eg, polldata) {
+function ready(error, eg, polldata, count_summary) {
     //console.log(polldata);
     map.removeLayer(lg);
     lg = L.layerGroup();
@@ -51,10 +53,13 @@ function ready(error, eg, polldata) {
     dataById = {};
     polldata.forEach(function(d) { dataById[Math.round(d.governorate).toString()] = d; });
 
+    var num_points = count_summary["governorate"].summary.count
+    data_count.update({count: num_points})
+
     function onEachFeature(feature, layer) {
         layer.on({
             mouseover: highlightFeature,
-            mouseout: resetHighlight,
+            mouseout: resetHighlight
         });
     }
 
@@ -112,6 +117,7 @@ legend.addTo(map);
 
 var info = L.control();
 var header = L.control();
+var data_count = L.control();
 
 header.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'header');
@@ -120,6 +126,11 @@ header.onAdd = function (map) {
 };
 info.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info');
+    this.update();
+    return this._div;
+};
+data_count.onAdd = function(map) {
+    this._div = L.DomUtil.create('div', 'data-count');
     this.update();
     return this._div;
 };
@@ -149,8 +160,18 @@ info.update = function (props) {
 	f('polling_centers_not_have_indelible_ink',data) + ' did not have indelible ink.<br/>'
 	: "No data") : 'Hover over a governate'
 };
+data_count.update = function(props) {
+    var message = "-";
+    if(props)
+    {
+        message = d3.format(",f").call(null, props.count) + " data points"
+    }
+    this._div.innerHTML = message;
+};
 header.addTo(map);
+data_count.addTo(map);
 info.addTo(map);
+
 
 var time = new Date().getTime();
 function reloadData() {
