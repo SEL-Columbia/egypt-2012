@@ -6,11 +6,10 @@ wax.tilejson('http://a.tiles.mapbox.com/v3/modilabs.map-p543gvbh.jsonp', functio
 var refresh = function() {
     queue()
     .defer(d3.json, "egypt.json")
-    .defer(d3.csv, "http://bamboo.io/datasets/0a56028dd2a941c891ade63d61a5b144.csv")
+    .defer(d3.csv, "http://bamboo.io/datasets/ef16b8517c944c869c1a2765627f4aa4.csv")
+    /* TODO: fix base/parent dataset--doesnt' exist in bamboo right now */
     // load parent dataset
-    .defer(d3.json, "http://bamboo.io/datasets/f8cec970b1f6480491b61df487ff3b32/summary?select={%22governorate%22:1}")
-    //.defer(d3.csv, "http://bamboo.io/datasets/12f4ad4ae051459b8d9ab9bac4e6e227.csv")
-    //.defer(d3.csv, "http://bamboo.io/datasets/bcf1cd416a464bc893ac0e57c75bfade.csv")
+//    .defer(d3.json, "http://bamboo.io/datasets/f8cec970b1f6480491b61df487ff3b32/summary?select={%22governorate%22:1}")
     .await(ready);
 };
 refresh();
@@ -53,8 +52,10 @@ function ready(error, eg, polldata, count_summary) {
     dataById = {};
     polldata.forEach(function(d) { dataById[Math.round(d.governorate).toString()] = d; });
 
-    var num_points = count_summary["governorate"].summary.count
-    data_count.update({count: num_points})
+    /* TODO: fix base dataset--doesnt' exist in bamboo right now */
+    //var num_points = count_summary["governorate"].summary.count
+    //data_count.update({count: num_points})
+    data_count.update();
 
     function onEachFeature(feature, layer) {
         layer.on({
